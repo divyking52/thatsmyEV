@@ -48,7 +48,7 @@ export function HeroSearchFilter() {
   };
 
   return (
-    <div className="hero-search relative z-30 mt-4 w-full max-w-xl sm:mt-5">
+    <div className="hero-search relative z-30 w-full max-w-xl">
       <form
         role="search"
         className="grid grid-cols-1 gap-2 rounded-2xl border border-slate-200/90 bg-white/85 p-2 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-md sm:grid-cols-12 sm:gap-2 sm:p-2.5"
