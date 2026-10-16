@@ -100,5 +100,6 @@ export const mediaAssets = {
   heroPoster: media("hero-ev-1920.webp"),
   heroFallback: media("hero-ev.webp"),
   chargingLifestyle: media("ev-charging-lifestyle.webp"),
+  whyElectric: media("ev-suv.jpg"),
   author: media("rahul-shonak.jpg"),
 } as const;

@@ -33,7 +33,8 @@ export function JourneyTrack() {
             trigger: sectionRef.current,
             pin: true,
             scrub: true,
-            end: () => `+=${Math.max(getScrollDistance() * multiplier, window.innerHeight)}`,
+            end: () =>
+              `+=${Math.max(getScrollDistance() * multiplier, window.innerHeight)}`,
             invalidateOnRefresh: true,
             fastScrollEnd: true,
             anticipatePin: 1,
@@ -63,59 +64,55 @@ export function JourneyTrack() {
     <section
       ref={sectionRef}
       id="journey"
-      className="relative z-20 overflow-hidden bg-surface-950"
+      className="relative z-20 overflow-hidden bg-[#eef2f6]"
     >
-      <div className="box-border flex h-svh flex-col justify-center gap-4 px-0 pb-6 pt-20 sm:gap-5 sm:pb-8 sm:pt-24">
-        <div className="mx-auto w-full max-w-7xl shrink-0 px-5 sm:px-8">
+      <div className="box-border flex h-svh flex-col gap-2 px-0 pb-3 pt-[4rem] sm:gap-2.5 sm:pb-4 sm:pt-[4.5rem]">
+        <div className="mx-auto w-[min(1200px,calc(100%-1.5rem))] shrink-0 px-1 sm:px-0">
           <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-brand-700 sm:text-xs">
             How it works
           </p>
-          <h2 className="font-display mt-2 text-[1.75rem] font-semibold tracking-[-0.03em] sm:mt-3 sm:text-5xl">
+          <h2 className="font-display mt-0.5 text-[clamp(1.4rem,3.4vw,2.35rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
             Your EV journey,{" "}
             <span className="text-gradient">fully charged</span>
           </h2>
         </div>
 
-        <div className="relative w-full shrink-0 overflow-hidden">
-          <div
-            ref={trackRef}
-            className="flex w-max will-change-transform"
-          >
+        <div className="relative min-h-0 w-full flex-1 overflow-hidden">
+          <div ref={trackRef} className="flex h-full w-max will-change-transform">
             {journeyPanels.map((panel) => (
               <article
                 key={panel.step}
-                className="journey-panel flex w-[88vw] shrink-0 items-center px-[6vw] sm:w-[90vw] sm:px-[8vw] md:w-screen md:px-[12vw]"
+                className="flex h-full w-[96vw] shrink-0 items-stretch px-[2vw] md:w-screen md:px-[3vw] xl:px-[max(3vw,calc((100vw-1200px)/2))]"
               >
-                <div className="glass-panel grid w-full overflow-hidden rounded-2xl md:grid-cols-2 md:rounded-3xl">
-                  <div className="relative min-h-[160px] sm:min-h-[220px] md:min-h-[300px] lg:min-h-[340px]">
+                <div className="grid h-full w-full overflow-hidden rounded-2xl border border-slate-200/95 bg-white shadow-[0_16px_40px_-20px_rgba(15,23,42,0.2)] md:grid-cols-[1.1fr_1fr] md:rounded-[22px]">
+                  <div className="relative min-h-[42%] bg-gradient-to-br from-slate-50 to-slate-100 md:min-h-0">
                     <Image
                       src={panel.image}
                       alt={panel.title}
                       fill
-                      className="object-cover"
-                      sizes="(max-width:768px) 88vw, 50vw"
+                      className="object-cover object-center"
+                      sizes="(max-width:768px) 96vw, 55vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent md:bg-gradient-to-r md:from-transparent md:to-surface-900/40" />
                   </div>
-                  <div className="flex flex-col justify-center p-5 sm:p-7 md:p-8 lg:px-9 lg:py-8">
-                    <span className="font-display text-[11px] font-semibold tracking-[0.3em] text-brand-700 sm:text-sm">
+                  <div className="flex flex-col justify-center px-5 py-5 sm:px-7 sm:py-6 md:px-8 md:py-8 lg:px-10">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-brand-700 sm:text-xs">
                       STEP {panel.step}
                     </span>
-                    <h3 className="font-display mt-2 text-2xl font-semibold text-ink sm:mt-3 sm:text-3xl md:text-4xl">
+                    <h3 className="font-display mt-2 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold tracking-[-0.03em] text-ink">
                       {panel.title}
                     </h3>
-                    <p className="mt-1 text-sm font-medium text-brand-600">
+                    <p className="mt-1 text-base font-medium text-brand-600 sm:text-lg">
                       {panel.subtitle}
                     </p>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-muted sm:mt-5 sm:text-base">
+                    <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-muted sm:mt-4 sm:text-base">
                       {panel.copy}
                     </p>
-                    <div className="mt-5 sm:mt-8">
+                    <div className="mt-5 sm:mt-7">
                       <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-ink-dim sm:text-[11px]">
                         <span>Charge level</span>
                         <span className="text-brand-600">{panel.battery}%</span>
                       </div>
-                      <div className="battery-progress">
+                      <div className="battery-progress h-1.5 sm:h-2">
                         <span style={{ width: `${panel.battery}%` }} />
                       </div>
                     </div>
@@ -126,8 +123,8 @@ export function JourneyTrack() {
           </div>
         </div>
 
-        <div className="mx-auto w-[min(640px,82vw)] shrink-0">
-          <div className="mb-2 flex items-center justify-between text-[9px] uppercase tracking-[0.22em] text-ink-dim sm:text-[10px]">
+        <div className="mx-auto w-[min(1200px,calc(100%-4vw))] shrink-0 md:w-[min(1200px,calc(100%-6vw))]">
+          <div className="mb-1.5 flex items-center justify-between text-[9px] uppercase tracking-[0.22em] text-ink-dim sm:text-[10px]">
             <span>EV progress</span>
             <span>Battery charge</span>
           </div>

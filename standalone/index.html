@@ -205,11 +205,71 @@
     }
     .section p.lead { color: var(--muted); margin: 0.75rem 0 0; max-width: 36rem; }
 
-    /* Value story */
-    #why { min-height: 100svh; display: flex; align-items: center; background: var(--bg); z-index: 20; }
-    .story-word { display: inline-block; margin-right: 0.28em; opacity: 0.15; will-change: opacity, color; }
-    .story-word.hl { color: var(--brand-600); }
-    .story-word.ink { color: #000; }
+    /* Why Go Electric */
+    #why {
+      position: relative; z-index: 20; min-height: 100svh; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: #0b1220;
+    }
+    .why-visual {
+      position: absolute; inset: 0; will-change: transform;
+    }
+    .why-visual img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 50% 40%;
+    }
+    .why-veil {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(8,12,20,0.72) 0%, rgba(8,12,20,0.55) 45%, rgba(8,12,20,0.82) 100%),
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(142,184,42,0.16) 0%, transparent 70%);
+    }
+    .why-shell {
+      position: relative; width: min(64rem, 100%); margin: 0 auto;
+      padding: 5rem 1.25rem 2rem; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    @media (min-width: 640px) { .why-shell { padding: 6rem 2rem 2.5rem; } }
+    .why-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--brand-bright);
+    }
+    @media (min-width: 640px) { .why-eyebrow { font-size: 0.75rem; } }
+    .why-story {
+      font-family: var(--font-display); font-weight: 600; letter-spacing: -0.03em; line-height: 1.22;
+      font-size: clamp(1.55rem, 5.5vw, 3.35rem); margin: 1rem 0 0; max-width: 52rem; text-wrap: balance;
+    }
+    .story-word {
+      display: inline-block; margin-right: 0.28em; opacity: 0.18;
+      color: rgba(226,232,240,0.35); will-change: opacity, color;
+    }
+    .why-lede {
+      margin: 1.25rem 0 0; max-width: 28rem; font-size: 0.875rem; line-height: 1.45; color: #94a3b8;
+    }
+    @media (min-width: 640px) { .why-lede { font-size: 0.95rem; margin-top: 1.5rem; } }
+    .why-metrics {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+      width: 100%; max-width: 48rem; margin-top: 2rem;
+    }
+    @media (min-width: 640px) {
+      .why-metrics { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
+    }
+    .why-metric {
+      border-radius: 16px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.35); padding: 0.9rem 0.75rem; opacity: 0.25;
+      backdrop-filter: blur(12px);
+    }
+    @media (min-width: 640px) { .why-metric { padding: 1rem; border-radius: 18px; } }
+    .why-metric strong {
+      display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--brand-bright); line-height: 1;
+    }
+    @media (min-width: 640px) { .why-metric strong { font-size: 1.75rem; } }
+    .why-metric strong span { font-size: 0.85em; color: #c0de68; }
+    .why-metric .label {
+      margin-top: 0.35rem; font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #94a3b8;
+    }
+    .why-metric .title { margin-top: 0.4rem; font-size: 0.75rem; font-weight: 500; color: rgba(248,250,252,0.9); }
 
     /* Cards / bento */
     #explore { background: #fff; z-index: 20; }
@@ -299,40 +359,72 @@
       .card:hover .car-bolt { opacity: 1; }
     }
 
-    /* Journey */
-    #journey { z-index: 20; overflow: hidden; background: var(--bg); }
+    /* Journey — card fills the page */
+    #journey { z-index: 20; overflow: hidden; background: #eef2f6; }
     .journey-shell {
-      display: flex; height: 100svh; flex-direction: column; justify-content: center;
-      gap: 1rem; padding: 5.5rem 0 1.5rem; box-sizing: border-box;
+      display: flex; height: 100svh; flex-direction: column;
+      gap: 0.5rem; padding: 4rem 0 0.75rem; box-sizing: border-box;
     }
-    @media (min-width: 768px) { .journey-shell { gap: 1.25rem; padding: 6rem 0 2rem; } }
-    .journey-track-wrap { flex: 0 0 auto; width: 100%; overflow: hidden; }
-    .journey-track { display: flex; width: max-content; will-change: transform; }
+    @media (min-width: 768px) { .journey-shell { gap: 0.65rem; padding: 4.5rem 0 1rem; } }
+    .journey-head { flex-shrink: 0; width: min(1200px, calc(100% - 1.5rem)); margin: 0 auto; }
+    .journey-head h2 {
+      font-family: var(--font-display); font-weight: 600; letter-spacing: -0.03em;
+      font-size: clamp(1.4rem, 3.4vw, 2.35rem); margin: 0.15rem 0 0; line-height: 1.1;
+    }
+    .journey-track-wrap { flex: 1 1 auto; min-height: 0; width: 100%; overflow: hidden; }
+    .journey-track { display: flex; height: 100%; width: max-content; will-change: transform; }
     .journey-panel {
-      width: 88vw; flex-shrink: 0; padding: 0 6vw; display: flex; align-items: center;
+      width: 96vw; height: 100%; flex-shrink: 0; padding: 0 2vw;
+      display: flex; align-items: stretch;
     }
-    @media (min-width: 768px) { .journey-panel { width: 100vw; padding: 0 12vw; } }
+    @media (min-width: 768px) { .journey-panel { width: 100vw; padding: 0 3vw; } }
+    @media (min-width: 1200px) { .journey-panel { padding: 0 max(3vw, calc((100vw - 1200px) / 2)); } }
     .journey-card {
-      display: grid; width: 100%; overflow: hidden; border-radius: 16px;
+      display: grid; width: 100%; height: 100%; overflow: hidden; border-radius: 18px;
+      background: #fff; border: 1px solid rgba(226,232,240,0.95);
+      box-shadow: 0 16px 40px -20px rgba(15,23,42,0.2);
+      grid-template-rows: 42% 1fr;
     }
     @media (min-width: 768px) {
-      .journey-card { grid-template-columns: 1fr 1fr; border-radius: 24px; }
+      .journey-card {
+        grid-template-rows: none; grid-template-columns: 1.1fr 1fr; border-radius: 22px;
+      }
     }
-    .journey-img { position: relative; min-height: 160px; }
-    @media (min-width: 640px) { .journey-img { min-height: 220px; } }
-    @media (min-width: 768px) { .journey-img { min-height: 300px; } }
-    @media (min-width: 1024px) { .journey-img { min-height: 340px; } }
-    .journey-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .journey-body { padding: 1.25rem; }
-    @media (min-width: 768px) { .journey-body { padding: 2rem 2.25rem; } }
+    .journey-img {
+      position: relative; min-height: 0; height: 100%;
+      background: linear-gradient(160deg, #f8fafc, #eef2f6);
+    }
+    .journey-img img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .journey-body {
+      padding: 1.25rem 1.35rem; display: flex; flex-direction: column; justify-content: center; min-height: 0;
+    }
+    @media (min-width: 768px) { .journey-body { padding: 1.75rem 2rem; } }
+    @media (min-width: 1024px) { .journey-body { padding: 2rem 2.5rem; } }
+    .journey-body .eyebrow { margin: 0; }
+    .journey-body h3 {
+      font-family: var(--font-display); margin: 0.5rem 0 0;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 600; letter-spacing: -0.03em;
+    }
+    .journey-body .sub { margin: 0.35rem 0 0; color: var(--brand-600); font-weight: 500; font-size: 1rem; }
+    @media (min-width: 640px) { .journey-body .sub { font-size: 1.125rem; } }
+    .journey-body .copy {
+      margin: 0.85rem 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.6; max-width: 28rem;
+    }
+    @media (min-width: 768px) { .journey-body .copy { font-size: 1rem; margin-top: 1rem; } }
+    .journey-charge { margin-top: 1.35rem; }
+    @media (min-width: 768px) { .journey-charge { margin-top: 1.75rem; } }
     .battery { height: 3px; border-radius: 999px; background: rgba(15,23,42,0.08); overflow: hidden; }
     .battery > span {
       display: block; height: 100%; border-radius: inherit;
       background: linear-gradient(90deg, #6f921f, #a6ce39, #d7ea9e);
     }
     .journey-progress {
-      position: static; flex-shrink: 0; width: min(640px, 82vw); margin: 0 auto;
+      position: static; flex-shrink: 0; width: min(1200px, calc(100% - 4vw)); margin: 0 auto;
     }
+    @media (min-width: 768px) { .journey-progress { width: min(1200px, calc(100% - 6vw)); } }
     .journey-progress .battery { height: 6px; }
     .journey-progress .battery > span { width: 0%; }
 
@@ -455,13 +547,17 @@
       </div>
     </section>
 
-    <!-- VALUE -->
+    <!-- WHY GO ELECTRIC -->
     <section id="why">
-      <div class="ambient" style="left:50%;top:50%;transform:translate(-50%,-50%);opacity:.8"></div>
-      <div class="wrap" style="padding:4rem 0">
-        <p class="eyebrow">Why Go Electric?</p>
-        <h2 class="font-display" id="story" style="font-size:clamp(1.45rem,6.5vw,3.75rem);font-weight:600;line-height:1.28;letter-spacing:-0.03em;margin:1.5rem 0 0"></h2>
-        <p style="margin-top:2.5rem;max-width:36rem;color:var(--dim);font-size:0.95rem">The smart choice for tomorrow's roads — researched, compared, and shortlisted on ThatsmyEV.</p>
+      <div class="why-visual" id="whyVisual">
+        <img src="https://media.storebox.ai/media/e2b00de8-269c-4e7c-994b-9e7b16b7e93e/24e861ef-9ad6-4cce-8ed9-515f52a28e5f/ev-suv.jpg" alt="Electric SUV on an open road" />
+      </div>
+      <div class="why-veil"></div>
+      <div class="why-shell">
+        <p class="why-eyebrow">Why Go Electric?</p>
+        <h2 class="why-story" id="story"></h2>
+        <p class="why-lede">The smart choice for tomorrow's roads — researched, compared, and shortlisted on ThatsmyEV.</p>
+        <div class="why-metrics" id="whyMetrics"></div>
       </div>
     </section>
 
@@ -496,7 +592,7 @@
     <!-- JOURNEY -->
     <section id="journey">
       <div class="journey-shell">
-        <div class="wrap" style="flex-shrink:0">
+        <div class="journey-head">
           <p class="eyebrow">How it works</p>
           <h2>Your EV journey, <span class="text-gradient">fully charged</span></h2>
         </div>
@@ -504,7 +600,7 @@
           <div class="journey-track" id="journeyTrack"></div>
         </div>
         <div class="journey-progress">
-          <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--dim)">
             <span>EV progress</span><span>Battery charge</span>
           </div>
           <div class="battery"><span id="journeyBar"></span></div>
@@ -673,8 +769,16 @@
     /* ========== RENDER ========== */
     const storyEl = document.getElementById("story");
     storyEl.innerHTML = valueStory.map(w =>
-      `<span class="story-word ${w.highlight ? "hl" : "ink"}" data-highlight="${w.highlight}">${w.text}</span>`
+      `<span class="story-word" data-highlight="${w.highlight}">${w.text}</span>`
     ).join("");
+
+    document.getElementById("whyMetrics").innerHTML = whyElectric.map(b => `
+      <div class="why-metric">
+        <strong>${b.metric.value}<span>${b.metric.unit}</span></strong>
+        <div class="label">${b.metric.label}</div>
+        <div class="title">${b.title}</div>
+      </div>
+    `).join("");
 
     const carSvg = `
       <svg class="brand-car" viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -748,15 +852,15 @@
 
     document.getElementById("journeyTrack").innerHTML = journeyPanels.map(p => `
       <article class="journey-panel">
-        <div class="journey-card glass">
+        <div class="journey-card">
           <div class="journey-img"><img src="${p.image}" alt="${p.title}" /></div>
           <div class="journey-body">
             <div class="eyebrow">STEP ${p.step}</div>
-            <h3 class="font-display" style="margin:0.5rem 0 0;font-size:clamp(1.5rem,3vw,2.25rem)">${p.title}</h3>
-            <p style="margin:0.25rem 0 0;color:var(--brand-600);font-weight:500;font-size:0.9rem">${p.subtitle}</p>
-            <p style="margin:1rem 0 0;color:var(--muted);font-size:0.9rem;line-height:1.6;max-width:28rem">${p.copy}</p>
-            <div style="margin-top:1.25rem">
-              <div style="display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--dim);margin-bottom:0.4rem">
+            <h3>${p.title}</h3>
+            <p class="sub">${p.subtitle}</p>
+            <p class="copy">${p.copy}</p>
+            <div class="journey-charge">
+              <div style="display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--dim);margin-bottom:0.3rem">
                 <span>Charge level</span><span style="color:var(--brand-600)">${p.battery}%</span>
               </div>
               <div class="battery"><span style="width:${p.battery}%"></span></div>
@@ -907,21 +1011,28 @@
       .to("#heroCopy", { opacity: 0, y: -28, ease: "none" }, 0.15)
       .fromTo("#heroMedia", { scale: 1 }, { scale: 1.08, ease: "none" }, 0);
 
-    // Value story scrub
+    // Why Go Electric scrub
     const words = gsap.utils.toArray(".story-word");
-    gsap.set(words, { opacity: 0.15 });
+    const whyMetrics = gsap.utils.toArray(".why-metric");
+    gsap.set(words, { opacity: 0.18, color: "rgba(226,232,240,0.35)" });
+    gsap.set(whyMetrics, { opacity: 0.25, y: 16 });
+    gsap.set("#whyVisual", { scale: 1.08 });
     const storyTl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#why", start: "top top", end: isMobile ? "+=75%" : "+=120%",
+        trigger: "#why", start: "top top", end: isMobile ? "+=70%" : "+=110%",
         pin: true, scrub: true, invalidateOnRefresh: true, fastScrollEnd: true
       }
     });
+    storyTl.to("#whyVisual", { scale: 1, ease: "none", duration: 1 }, 0);
     words.forEach((word, i) => {
       storyTl.to(word, {
         opacity: 1,
-        color: word.dataset.highlight === "true" ? "#6f921f" : "#000000",
+        color: word.dataset.highlight === "true" ? "#A6CE39" : "#F8FAFC",
         ease: "none", duration: 0.08
       }, i * 0.08);
+    });
+    whyMetrics.forEach((metric, i) => {
+      storyTl.to(metric, { opacity: 1, y: 0, ease: "none", duration: 0.2 }, words.length * 0.08 * 0.55 + i * 0.08);
     });
 
     // Journey horizontal
