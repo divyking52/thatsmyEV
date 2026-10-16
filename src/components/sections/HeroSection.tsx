@@ -75,7 +75,7 @@ export function HeroSection() {
         <div className="relative z-10 h-full w-full overflow-hidden">
           <div ref={mediaRef} className="absolute inset-0 will-change-transform">
             <video
-              className="absolute inset-0 h-full w-full object-cover object-[62%_42%]"
+              className="absolute inset-0 h-full w-full object-cover object-[50%_42%]"
               autoPlay
               muted
               loop
@@ -86,17 +86,17 @@ export function HeroSection() {
             >
               <source src={mediaAssets.heroVideo} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(8,12,20,0.72)] via-[rgba(8,12,20,0.28)] to-transparent" />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,12,20,0.78)_0%,rgba(8,12,20,0.45)_36%,rgba(8,12,20,0.12)_58%,transparent_78%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_55%,rgba(8,12,20,0.55)_0%,transparent_70%)]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(8,12,20,0.55)] via-[rgba(8,12,20,0.2)] to-[rgba(8,12,20,0.35)]" />
           </div>
 
-          <div className="hero-copy-block absolute inset-0 z-20 flex flex-col justify-end px-4 pb-4 pt-20 sm:px-7 sm:pb-5 sm:pt-24 lg:px-10 lg:pb-6">
-            <div className="max-w-xl">
+          <div className="hero-copy-block absolute inset-0 z-20 flex flex-col items-center justify-center px-4 pb-6 pt-20 text-center sm:px-7 sm:pb-8 sm:pt-24">
+            <div className="flex w-full max-w-2xl flex-col items-center">
               <p className="hero-brand font-display text-[clamp(2.4rem,9vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-white">
                 thats<span className="text-brand-400">my</span>EV
               </p>
 
-              <h1 className="font-display mt-2 text-[clamp(1.05rem,2.8vw,1.65rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-white/92 sm:mt-2.5">
+              <h1 className="font-display mt-2 text-[clamp(1.05rem,2.8vw,1.65rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-white/92 sm:mt-2.5">
                 <span className="hero-line block overflow-hidden">
                   <span className="inline-block">Buy EV cars in India 2026</span>
                 </span>
@@ -107,12 +107,12 @@ export function HeroSection() {
                 </span>
               </h1>
 
-              <p className="hero-sub mt-2.5 max-w-md text-xs leading-snug text-slate-200/80 sm:mt-3 sm:text-[0.9rem]">
+              <p className="hero-sub mx-auto mt-2.5 max-w-md text-xs leading-snug text-slate-200/80 sm:mt-3 sm:text-[0.9rem]">
                 Research and shortlist electric vehicles with certified range,
                 pricing, and real ownership data.
               </p>
 
-              <div className="hero-cta mt-3 flex flex-wrap items-center gap-2 sm:mt-3.5 sm:gap-2.5">
+              <div className="hero-cta mt-3 flex flex-wrap items-center justify-center gap-2 sm:mt-3.5 sm:gap-2.5">
                 <MagneticButton
                   href="#explore"
                   className="!px-5 !py-2.5 text-xs sm:!px-6 sm:!py-3 sm:text-sm"
@@ -127,7 +127,7 @@ export function HeroSection() {
                 </a>
               </div>
 
-              <div className="mt-3 sm:mt-3.5">
+              <div className="mt-3 w-full max-w-xl sm:mt-3.5">
                 <HeroSearchFilter />
               </div>
             </div>
