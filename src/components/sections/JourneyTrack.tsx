@@ -65,7 +65,7 @@ export function JourneyTrack() {
       id="journey"
       className="relative z-20 overflow-hidden bg-surface-950"
     >
-      <div className="flex h-svh flex-col justify-center">
+      <div className="box-border flex h-svh flex-col justify-center gap-4 px-0 pb-6 pt-20 sm:gap-5 sm:pb-8 sm:pt-24">
         <div className="mx-auto w-full max-w-7xl shrink-0 px-5 sm:px-8">
           <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-brand-700 sm:text-xs">
             How it works
@@ -76,18 +76,18 @@ export function JourneyTrack() {
           </h2>
         </div>
 
-        <div className="relative mt-6 w-full flex-1 overflow-hidden sm:mt-10 md:mt-12">
+        <div className="relative w-full shrink-0 overflow-hidden">
           <div
             ref={trackRef}
-            className="flex h-full w-max will-change-transform"
+            className="flex w-max will-change-transform"
           >
             {journeyPanels.map((panel) => (
               <article
                 key={panel.step}
-                className="journey-panel flex h-full w-[88vw] shrink-0 items-center px-[6vw] sm:w-[90vw] sm:px-[8vw] md:w-screen md:px-[12vw]"
+                className="journey-panel flex w-[88vw] shrink-0 items-center px-[6vw] sm:w-[90vw] sm:px-[8vw] md:w-screen md:px-[12vw]"
               >
                 <div className="glass-panel grid w-full overflow-hidden rounded-2xl md:grid-cols-2 md:rounded-3xl">
-                  <div className="relative min-h-[160px] sm:min-h-[220px] md:min-h-[420px]">
+                  <div className="relative min-h-[160px] sm:min-h-[220px] md:min-h-[300px] lg:min-h-[340px]">
                     <Image
                       src={panel.image}
                       alt={panel.title}
@@ -97,7 +97,7 @@ export function JourneyTrack() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent md:bg-gradient-to-r md:from-transparent md:to-surface-900/40" />
                   </div>
-                  <div className="flex flex-col justify-center p-5 sm:p-7 md:p-10">
+                  <div className="flex flex-col justify-center p-5 sm:p-7 md:p-8 lg:px-9 lg:py-8">
                     <span className="font-display text-[11px] font-semibold tracking-[0.3em] text-brand-700 sm:text-sm">
                       STEP {panel.step}
                     </span>
@@ -126,7 +126,7 @@ export function JourneyTrack() {
           </div>
         </div>
 
-        <div className="absolute bottom-5 left-1/2 w-[min(640px,82vw)] -translate-x-1/2 sm:bottom-8">
+        <div className="mx-auto w-[min(640px,82vw)] shrink-0">
           <div className="mb-2 flex items-center justify-between text-[9px] uppercase tracking-[0.22em] text-ink-dim sm:text-[10px]">
             <span>EV progress</span>
             <span>Battery charge</span>
